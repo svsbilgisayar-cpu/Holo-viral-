@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,11 +28,12 @@ jobs:
           yes | sdkmanager --licenses
           sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
-
-      - name: Build (tests + debug apk)
-        run: ./gradlew clean test :app:assembleDebug --no-daemon
+      # gradlew olmadığı için Gradle'ı action ile kuruyoruz
+      - name: Gradle ile derle (tests + debug apk)
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 8.7
+          arguments: clean test :app:assembleDebug
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
