@@ -1,17 +1,4 @@
 
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+rootProject.name = "holo-viral"
 
-rootProject.name = "Holo-viral"
 include(":app")
