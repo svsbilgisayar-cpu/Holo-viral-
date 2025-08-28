@@ -1,4 +1,2 @@
 
-rootProject.name = "holo-viral"
-
 include(":app")
